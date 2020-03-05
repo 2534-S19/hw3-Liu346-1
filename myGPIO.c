@@ -38,7 +38,34 @@ void initGPIO()
     // Boosterpack LED Blue
 
 
+
+
+
+        //Pressed detection
+        bool LeftButton_IsPressed()
+        {
+            return ((P1IN & LEFT_BUTTON) == PRESSED);
+        }
+        bool RightButton_IsPressed()
+        {
+            return ((P1IN & RIGHT_BUTTON) == PRESSED);
+        }
+        bool TopButton_IsPressed()
+        {
+            return ((P5IN & TOP_BUTTON) == PRESSED);
+        }
+        bool BottomButton_IsPressed()
+        {
+            return ((P3IN & BOTTOM_BUTTON) == PRESSED);
+        }
     // Turn off all LEDs at the start.
+        TurnOff_Launchpad_LEDR();
+        TurnOff_BOOST_LEDR();
+        TurnOff_Launchpad_LEDG();
+        TurnOff_BOOST_LEDG();
+        TurnOff_BOOST_LEDB();
+        TurnOff_Launchpad_LEDB();
+
 }
 
 // TODO: Create a function to return the status of Launchpad Pushbutton S1
@@ -68,7 +95,7 @@ unsigned char checkStatus_BoosterpackS2()
 // TODO: Create a function to turn on Launchpad LED1.
 void turnOn_LaunchpadLED1()
 {
-
+    P1OUT = P1OUT |  LEFT_LED;
 }
 
 // TODO: Create a function to turn off Launchpad LED1.
@@ -148,3 +175,60 @@ void turnOff_BoosterpackLEDBlue()
 {
 
 }
+void TurnOn_Launchpad_LED1()
+    {
+
+    }
+    void TurnOn_BOOST_LEDB()
+    {
+        P5OUT = P5OUT |  BLUE_LED;
+    }
+    void TurnOn_BOOST_LEDG()
+    {
+        P2OUT = P2OUT |  GREEN_LED;
+    }
+    void TurnOn_BOOST_LEDR()
+    {
+        P2OUT = P2OUT |  RED_LED;
+    }
+    void TurnOn_Launchpad_LEDB()
+    {
+        P2OUT = P2OUT |  LAUNCH_BLUE_LED;
+    }
+    void TurnOn_Launchpad_LEDG()
+    {
+        P2OUT = P2OUT |  LAUNCH_GREEN_LED;
+    }
+    void TurnOn_Launchpad_LEDR()
+    {
+        P2OUT = P2OUT |  LAUNCH_RED_LED;
+    }
+    //turn off
+    void TurnOff_Launchpad_LED1()
+    {
+        P1OUT = P1OUT & ~LEFT_LED;
+    }
+    void TurnOff_BOOST_LEDB()
+    {
+        P5OUT = P5OUT & ~BLUE_LED;
+    }
+    void TurnOff_BOOST_LEDG()
+    {
+        P2OUT = P2OUT & ~GREEN_LED;
+    }
+    void TurnOff_BOOST_LEDR()
+    {
+        P2OUT = P2OUT & ~RED_LED;
+    }
+    void TurnOff_Launchpad_LEDB()
+    {
+        P2OUT = P2OUT & ~LAUNCH_BLUE_LED;
+    }
+    void TurnOff_Launchpad_LEDG()
+    {
+        P2OUT = P2OUT & ~LAUNCH_GREEN_LED;
+    }
+    void TurnOff_Launchpad_LEDR()
+    {
+        P2OUT = P2OUT & ~LAUNCH_RED_LED;
+    }
